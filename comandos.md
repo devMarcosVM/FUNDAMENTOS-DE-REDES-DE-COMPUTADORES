@@ -28,7 +28,7 @@
     no ip address 192.168.10.254 255.255.255.0
     ```
 
-## Primeiras Configurações do Switch
+## Primeiras Configurações do Switch e Router
 - Certifique-se de estar no nível mais alto de administração antes de executar os comandos abaixo:
     ```bash
     hostname NOME
