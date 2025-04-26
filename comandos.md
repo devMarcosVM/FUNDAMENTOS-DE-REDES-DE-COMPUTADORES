@@ -36,7 +36,7 @@
     line console 0
     password SUA_SENHA
     login
-    exit
+    exit #volta para o nível anterior
     do copy running-config startup-config
     reload
     ```
