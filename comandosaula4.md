@@ -92,7 +92,7 @@ A configuração do servidor serve para utilizar os serviços do servidor, o que
  - Passos
    1. Desligar servidor
    2. Retirar a peça Ethernet e no lugar colocar a peça PT-HOST-NM-1CGE
-   3. Religar o servidor e colocar um cabo Copper... entre o servidor e o Switch
+   3. Religar o servidor e colocar um cabo Copper Straight-Through entre o servidor e o Switch
    4. Abra o Ip configuration do Servidor e coloque o ip `192.168.1.2` (ip do servidor) e `192.168.1.1` (ip do roteador) na entrada de gateway
    5. Coloque o DNS como endereco ip do servidor
 
@@ -111,3 +111,4 @@ A configuração do servidor serve para utilizar os serviços do servidor, o que
 ## Anotações para prova
 
  - Quando o 0 está no final do ip 192.168.1.0 você está mostrando o endereço de uma rede inteira não de um dispositivo
+
