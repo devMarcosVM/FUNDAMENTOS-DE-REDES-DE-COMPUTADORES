@@ -103,7 +103,7 @@ A configuração do servidor serve para utilizar os serviços do servidor, o que
    3. As vezes a interface não está correta então verifique se está no GigabitEthernet0
    4. Configure o Gateway (ip do roteador) e DNS (ip do servidor)
    5. Coloque o Start IP Adress a partir de onde você quer que o id das máquinas comece, como o id 1 esta no roteador e id 2 no servidor colocaremos o start ip adress em `192.168.1.3`.
-   6. Agora vá em todos os PCs em Desktop -> IP Configuration e selecione DHCP, os ipa serão preenchidos automaticamente.
+   6. Agora vá em todos os PCs em `Desktop` -> `IP Configuration` e selecione DHCP, os ipa serão preenchidos automaticamente.
 
 
 
