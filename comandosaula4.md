@@ -88,6 +88,7 @@ Faça isso para todos os computadores para conectar a outra redes
     3. Repita o processo para todas as redes que forem necessárias.
 
 ## Configurar o Servidor
+A configuração do servidor serve para utilizar os serviços do servidor, o que fizemos em aula foi o serviço de automatização dos ips das máquinas através do DHCP.
  - Passos
    1. Desligar servidor
    2. Retirar a peça Ethernet e no lugar colocar a peça PT-HOST-NM-1CGE
