@@ -42,3 +42,57 @@ Configuração:
 6. Abra o roteador da rede 2, Roteador->Config->RIP, e adicione as redes `192.168.15.0` e `192.168.5.0`, opcionalmente adicionando a própria rede do roteador mas não é obrigatório.
 7. Mande pacotes entre os roteadores e máquinas, as primeiras vezes vai falhar mas acredite no seu potencial.
 
+# Passo 3 - Adicionar Uma Nova Rede Triangulada
+Inicialmente configure uma nova rede com roteador, switch e as máquinas no ip `192.168.30.0`, então:
+
+1. Desligue o roteador e Adicone o adaptador `NIM-2T` e ligue o roteador novamente
+2. Conecte o novo roteador aos outros da rede 1 e rede 2 com o cabo `Serial DCE`, para não se perder adicione documentação nas conexões com o número das redes e cada roteador pois cada conexão serial é um novo ip a ser trabalhado o que é muito fácil de se perder.
+3. Agora você vai precisar entrar em cada um dos roteadores e configurar os IP's dos Seriais:
+    Configuração do roteador `192.168.5.1`, roteador da primeira rede:
+
+    ```bash
+         do show ip interface brief
+         interface Serial0/1/1
+         ip address 192.168.40.1 255.255.255.0
+         no shutdown
+         do wr
+         exit
+    ```
+
+    Configuração do roteador `192.168.10.1`, roteador da segunda rede:
+
+    ```bash
+         enable
+         configure terminal
+         do show ip interface brief
+         interface Serial0/1/1
+         ip address 192.168.25.1 255.255.255.0
+         no shutdown
+         do wr
+         exit
+    ```
+    Configuração do roteador `192.168.30.1`, roteador da rede que acabou de ser criada:
+
+    ```bash
+         enable
+         configure terminal
+         do show ip interface brief
+         interface Serial0/1/0
+         ip address 192.168.40.2 255.255.255.0
+         no shutdown
+         exit
+         interface Serial0/1/1
+         ip address 192.168.25.2 255.255.255.0
+         no shutdown
+         do wr
+         exit
+    ```
+4. Configuração do RIP, agora temos que configurar o RIP dos 3 roteadores para que eles saibam como se achar:
+    - Roteador 1 (`192.168.5.1`) e Roteador 2 (`192.168.10.0`): Adicione os ips `192.168.40.0` e `192.168.25.2` no RIP desse roteador
+    - Roteador 3 (`192.168.30.1`): Adicione os seguintes ips:
+        - `192.168.5.0`
+        - `192.168.10.0`
+        - `192.168.15.0`
+        - `192.168.25.0`
+        - `192.168.30.0`
+        - `192.168.40.0`
