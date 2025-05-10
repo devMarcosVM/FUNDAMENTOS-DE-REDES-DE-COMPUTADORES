@@ -15,5 +15,30 @@ Configure as maquinas da rede1 com DHCP após configurar o servidor, o tutorial 
 
 Configure o link `www.unb.br` no DNS em Servidor->Services->DNS, adicione o nome como `www.unb.br` para o ip do servidor que no nosso caso é `192.168.5.2`.
 
+## Segundo Passo - Conexão Entre Roteadores
+Configuração:
 
+1. Desligue os roteadores, e adicione a peça NIM-2T neles e depois religue eles.
+
+2. Interligue os dois roteadores pelo cabo `Serial DCE` através da porta `Serial 0/1/0`
+
+3. Para conectar duas redes através do roteador é preciso iniciar uma nova rede que irá conectar as duas, acesse o roteador da rede `192.168.5.1` e execute os comandos:
+
+    ```bash
+         enable
+         configure terminal
+         do show ip interface brief
+         interface Serial0/1/0
+         ip address 192.168.15.1 255.255.255.0
+         no shutdown
+         do wr
+         exit
+    ```
+
+    E faça a mesma coisa no outro roteador trocando o ip do Serial para `192.168.15.2`
+
+4. Vá nas máquina da segunda rede e altere o DNS do IPconfig para o ip do DNS do servidor da primeira rede que é o `192.168.5.2`
+5. Abra o roteador da rede 1, Roteador->Config->RIP, e adicione as redes `192.168.15.0` e `192.168.10.0`, opcionalmente adicionando a própria rede do roteador mas não é obrigatório.
+6. Abra o roteador da rede 2, Roteador->Config->RIP, e adicione as redes `192.168.15.0` e `192.168.5.0`, opcionalmente adicionando a própria rede do roteador mas não é obrigatório.
+7. Mande pacotes entre os roteadores e máquinas, as primeiras vezes vai falhar mas acredite no seu potencial.
 
